@@ -6,24 +6,33 @@ import { AppContext } from './App'
 
 const Results = () => {
   
-  const { ageCount, setAgeCount, weightCount, setWeightCount, heightCount, setHeightCount, handleCalculation
+  const { ageCount, weightCount, heightCount, bmi, recommendation, bmiCategory, normalWeightRanges, setWeightCount, setHeightCount, setAgeCount, setCheckMaleGender, setCheckFemaleGender
   } = useContext(AppContext)
+
+  const backToHome = () => {
+    setWeightCount('')
+    setHeightCount('')
+    setAgeCount('')
+    setCheckMaleGender('')
+    setCheckFemaleGender('')
+    navigate('/get-bmi')
+  
+  }
 
 
   const navigate = useNavigate()
+    // Mantaining a healthy weight may reduce the risk of chronic diseases associated with overweight and obesity.
   return (
     <div className="results-container">
-     <h2>Result</h2>
-     <p>
-        For your height of <span>{heightCount}</span>, weight of <span>{weightCount}</span> and age of <span>{ageCount}</span>,  a normal weight range would be from x to y kilograms.
-     </p>
-     <p>
-       Your BMI is , indicating your weight is in the z category for adults of your height.
-     </p>
-     <p>
-       Mantaining a healthy weight may reduce the risk of chronic diseases associated with overweight and obesity.
-     </p>
-      <button onClick={() => navigate('/get-bmi')} >Back To Home</button>
+      <h2>Result</h2>
+      <p>
+        Your BMI is <span>{bmi}</span>, indicating your weight is in the <span>{bmiCategory}</span> category for adults of your height.
+      </p>
+      <p>
+        For your height of <span>{heightCount}</span>, a normal weight range would be from <span>{normalWeightRanges[0]}</span> to <span>{normalWeightRanges[1]}</span> kilograms.
+      </p>
+      <p>{recommendation}</p>
+      <button onClick={backToHome}>Back To Home</button>
     </div>
   )
 }

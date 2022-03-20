@@ -1,53 +1,100 @@
 import Main from './main';
-import {Routes,
-        Route,
-      } from 'react-router-dom'
+import {
+  Routes,
+  Route,
+} from 'react-router-dom'
 import './index.css'
 import Results from './results';
-import React, {useState, createContext} from 'react';
+import React, { useState, createContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const AppContext = createContext();
 
 const App = () => {
- // console.log(bmi);
 
   const [ageCount, setAgeCount] = useState('')
   const [weightCount, setWeightCount] = useState('')
   const [heightCount, setHeightCount] = useState('')
   const [checkMaleGender, setCheckMaleGender] = useState()
   const [checkFemaleGender, setCheckFemaleGender] = useState()
+  const [alert, setAlert] = useState({ show: false, msg: '', type: ''})
 
-  const handleCalculation = () => {
-    let bmi = weightCount / (heightCount * heightCount)
-    bmi = Math.round(bmi)
-    navigate('/results')
-    return bmi
+  //calculate bmi
+  let bmi = weightCount / (heightCount * heightCount)
+  bmi = Math.round(bmi)
+  // console.log(bmi);
+
+  let normalWeightOne = 18.5 * (heightCount * heightCount)
+  normalWeightOne = Math.round(normalWeightOne)
+  
+  let normalWeightTwo = 24.9 * (heightCount * heightCount)
+  normalWeightTwo = Math.round(normalWeightTwo)
+
+  const normalWeightRanges = [normalWeightOne, normalWeightTwo]
+  
+  let bmiCategory = '';
+  let recommendation = '';
+
+
+  if(bmi < 18.5) {
+    bmiCategory = 'Under Weight'
+    recommendation = 'Mantaining a healthy weight  may reduce the risk of chronic diseases associated with overweight and obesity'
+  } else if (bmi >= 18.5 && bmi <= 24.9) {
+    bmiCategory = 'Normal weight'
+    recommendation = 'Mantaining a healthy weight  may reduce the risk of chronic diseases associated with overweight, underweight and obesity.'
+  } else if (bmi >= 25 && bmi <= 29.9) {
+    bmiCategory = 'Over Weight'
+    recommendation = 'Common treatments for overweight include losing weight through healthy eating and being more physically active. Mantaining a healthy weight may reduce the risk of chronic diseases associated with overweight.'
+  } else {
+    bmiCategory = 'Obese'
+    recommendation = 'Common treatments for obesity include losing weight through healthy eating and being more physically active. Mantaining a healthy weight may reduce the risk of chronic diseases associated with obesity.'
   }
+
+    //console.log(handleCalculation());
 
   let navigate = useNavigate()
 
-  //console.log(handleCalculation());
-  
+  const handleCalculation = () => {
+
+    //handle validations
+    if (heightCount === '' || weightCount === '' || ageCount === '') {
+      setAlert({show: true, msg: 'Please, you need to provide your Weight, Age and Height!'})
+      return
+    }
+
+    // if (!checkFemaleGender || !checkMaleGender) {
+    //   setAlert({ show: true, msg: 'Please, you need to select a gender!' })
+    //   return
+    // }
+    navigate('/results')
+  }
+
+
   return (
-      <AppContext.Provider value={{ 
-        ageCount, 
-        setAgeCount, 
-        weightCount, 
-        setWeightCount, 
-        heightCount, 
-        setHeightCount, 
-        handleCalculation,
-        checkFemaleGender,
-        checkMaleGender,
-        setCheckFemaleGender,
-        setCheckMaleGender 
-      }}>
+    <AppContext.Provider value={{
+      ageCount,
+      setAgeCount,
+      weightCount,
+      setWeightCount,
+      heightCount,
+      setHeightCount,
+      handleCalculation,
+      checkFemaleGender,
+      checkMaleGender,
+      setCheckFemaleGender,
+      setCheckMaleGender,
+      bmi,
+      recommendation,
+      bmiCategory,
+      normalWeightRanges,
+      alert,
+      setAlert
+    }}>
       <Routes>
-          <Route path='/get-bmi' element={<Main />} />
-          <Route path='/results' element={<Results />} />
+        <Route path='/get-bmi' element={<Main />} />
+        <Route path='/results' element={<Results />} />
       </Routes>
-      </AppContext.Provider> 
+    </AppContext.Provider>
   )
 }
 

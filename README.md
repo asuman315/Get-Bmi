@@ -12,10 +12,16 @@
    >31111 
 
    whenever I clicked on the plus icon three times - instead of getting 
-   
+
    >a 34.  
 
-   Solution: I had to change the input type from `text` to `number`, then convert the input value to an intenger using the `parseint()` method.   
+   Solution: I had to change the `input type` from `text` to `number`, then convert the input value to an intenger using the `parseInt()` method. 
+
+   *Code:\*  
+   ```diff
+   - onChange={(e) => setAgeCount(e.target.value)}
+   + onChange={(e) => setAgeCount(parseInt(e.target.value))}
+   ```
 
 3. **Hiding Arrows From Input Number**\
   Found out a [*solution on google.*](https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp)

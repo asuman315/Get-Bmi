@@ -207,6 +207,8 @@ ul {
 
 .results-container span {
   color: hsl(125, 78%, 60%);
+  font-weight: 700;
+  font-family: 'poppins', sans-serif;
 }
 
 .results-container button {
@@ -229,6 +231,19 @@ ul {
 
 .circle-checked {
   color: hsl(125, 78%, 60%);
+}
+
+.alert {
+  font-size: 1.5rem;
+  color: white;
+  background-color: hsl(0, 79%, 65%);
+  position: absolute;
+  top: 55rem;
+  width: 75%;
+  padding: 1rem;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  line-height: 2.5rem;
 }
 
 /* Hide input arrows on Chrome, Safari, Edge, Opera */

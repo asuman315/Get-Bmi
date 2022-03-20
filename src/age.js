@@ -2,13 +2,14 @@ import circleMinus from './images/circle-minus.svg';
 import circlePlus from './images/circle-plus.svg'; 
 import React, { createContext, useContext } from 'react';
 import {AppContext} from './App'
+import Alert from './Alert'
 // import {} from 'react-icons/fa';
 
 //const AppContext = createContext();
 
 const Age = () => {
   
-  const { ageCount, setAgeCount, weightCount, setWeightCount, heightCount, setHeightCount, handleCalculation
+  const { ageCount, setAgeCount, weightCount, setWeightCount, heightCount, setHeightCount, handleCalculation, alert, checkMaleGender, checkFemaleGender, 
 } = useContext(AppContext)
  
   return (
@@ -28,7 +29,8 @@ const Age = () => {
                 type="number" 
                 placeholder='e.g 28' 
                 value={ageCount} 
-                onChange={(e) => setAgeCount(parseInt(e.target.value))} 
+                onChange={(e) => setAgeCount(parseInt(e.target.value))}
+                required  
              />
             <img 
               src={circlePlus} 
@@ -51,8 +53,9 @@ const Age = () => {
                 type="number" 
                 placeholder='e.g 68'
                 value={weightCount}
-                onChange={(e) => setWeightCount(parseInt(e.target.value))} 
-                required
+                onChange={(e) => setWeightCount(parseInt(e.target.value))
+                } 
+                required 
               />
              <img 
                 src={circlePlus} 
@@ -74,6 +77,7 @@ const Age = () => {
               className='circle-minus' 
               alt="circle minus" 
               onClick={() => setHeightCount(heightCount - 0.01)} 
+              required 
             />
             <input 
               type="number"  
@@ -97,6 +101,7 @@ const Age = () => {
        </li>
       </ul>
      </form>
+     {alert.show && <Alert />}
       <div className="button-container">
         <button className='calculate-btn' onClick={handleCalculation}>Calculate Your BMI</button>
       </div>

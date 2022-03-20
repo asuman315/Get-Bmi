@@ -6,7 +6,7 @@ import { AppContext } from './App'
 
 const Genders = () => {
 
-  const { ageCount, setAgeCount, weightCount, setWeightCount, heightCount, setHeightCount, handleCalculation, setCheckMaleGender, setCheckFemaleGender, checkMaleGender, checkFemaleGender
+  const { setCheckMaleGender, setCheckFemaleGender, checkMaleGender, checkFemaleGender
   } = useContext(AppContext)
 
   const maleGenderClicked = () => {
