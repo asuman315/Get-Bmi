@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/get-bmi/static/css/main.632aa0d8.css",
-    "main.js": "/get-bmi/static/js/main.a5f8c830.js",
+    "main.js": "/get-bmi/static/js/main.2d71ee2e.js",
     "static/media/female-icons.svg": "/get-bmi/static/media/female-icons.4d7df9f9dcb7e042a65ec965492dac07.svg",
     "static/media/circle-plus.svg": "/get-bmi/static/media/circle-plus.2942fdf2bb8fba1fc266e54531f2aa65.svg",
     "index.html": "/get-bmi/index.html",
     "static/media/male-icon.svg": "/get-bmi/static/media/male-icon.68c2fbceb1125ae75cc4a2b5049bd136.svg",
     "static/media/circle-minus.svg": "/get-bmi/static/media/circle-minus.2c945840b6f17a5652c75beb1b1b58b3.svg",
     "main.632aa0d8.css.map": "/get-bmi/static/css/main.632aa0d8.css.map",
-    "main.a5f8c830.js.map": "/get-bmi/static/js/main.a5f8c830.js.map"
+    "main.2d71ee2e.js.map": "/get-bmi/static/js/main.2d71ee2e.js.map"
   },
   "entrypoints": [
     "static/css/main.632aa0d8.css",
-    "static/js/main.a5f8c830.js"
+    "static/js/main.2d71ee2e.js"
   ]
 }
