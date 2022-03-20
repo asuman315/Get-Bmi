@@ -1,0 +1,273 @@
+body,
+html {
+  padding: 0;
+  margin: 0;
+  font-size: 10px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--clr-primary-1);
+}
+
+:root {
+  --clr-primary-1: black;
+  --clr-primary-2: hsl(125, 78%, 60%);
+  --clr-primary-3: hsl(0, 79%, 65%);
+  --clr-dark-gray: hsl(240, 5%, 17%);
+  --width-max: 600px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'poppins', sans-serif;
+}
+
+.app h1 {
+  color: white;
+  font-size: 3rem;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  margin-left: 7%;
+  font-weight: 900;
+}
+
+.genders-container {
+  padding: 0 2rem;
+}
+
+.genders-title {
+  color: white;
+  text-transform: capitalize;
+  font-size: 2rem;
+  margin-left: 7%;
+}
+
+.genders-container {
+  display: flex;
+  width: 85vw;
+  max-width: var(--width-max);
+  margin: 0 auto;
+  padding: 0;
+  justify-content: space-between;
+}
+
+.gender {
+  background-color: var(--clr-dark-gray);
+  position: relative;
+  padding: 1.5rem 1.2rem;
+  width: 40%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.gender-icon {
+  width: 4rem;
+}
+
+.female-icon {
+  width: 5rem;
+  color: white;
+}
+
+.circle-check {
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  right: 1rem;
+}
+
+.name {
+  color: white;
+  font-weight: 400;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+}
+
+.age-container {
+  display: flex;
+  flex-direction: column;
+  width: 85vw;
+  margin: 0 auto;
+  max-width: var(--width-max);
+}
+
+ul {
+  padding: 0;
+  width: 100%;
+}
+
+.fields {
+  display: flex;
+}
+
+.age-container h3 {
+  color: white;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+/****** Age form styles **********/
+.age input {
+  padding: 1rem;
+  border: none;
+  outline: none;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 2rem;
+  width: 72%;
+}
+
+.age img,
+.height img,
+.weight img {
+  background-color: white;
+  padding: 1.5rem;
+  width: 5%;
+  cursor: pointer;
+}
+
+.circle-plus {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.circle-minus {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+/******* Weight and height form styles ******/
+.weight input,
+.height input {
+  padding: 1rem;
+  border: none;
+  outline: none;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 2rem;
+  width: 35%;
+}
+
+.units {
+  width: 35%;
+  border: none;
+  outline: none;
+  margin-left: 1rem;
+  border-radius: 5px;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.8;
+  cursor: pointer;
+}
+
+.button-container {
+  width: 85vw;
+  max-width: var(--width-max);
+  margin: 3rem auto;
+}
+.calculate-btn {
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 5px;
+  border: none;
+  font-size: 2rem;
+  font-weight: 500;
+  color: white;
+  background-color: var(--clr-primary-2);
+  cursor: pointer;
+}
+
+.results-container {
+  color: white;
+  width: 85vw;
+  margin: 1rem auto;
+  max-width: 600px;
+}
+
+.results-container h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+
+.results-container p {
+  letter-spacing: 0.8px;
+  line-height: 3rem;
+  font-size: 1.8rem;
+}
+
+.results-container span {
+  color: hsl(125, 78%, 60%);
+}
+
+.results-container button {
+  background-color: var(--clr-primary-2);
+  padding: 1.5rem;
+  font-size: 1.8rem;
+  letter-spacing: 0.8px;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: white;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.gender-checked {
+  border: 2px solid hsl(125, 78%, 60%);
+}
+
+.circle-checked {
+  color: hsl(125, 78%, 60%);
+}
+
+/* Hide input arrows on Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide input arrows on Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/*************************************/
+/*KEY FRAMES*/
+/**************************************/
+
+/*ABOVE 600PX*/
+@media screen and (min-width: 600px) {
+  html {
+    font-size: 15px;
+  }
+
+  .app h1,
+  .genders-title {
+    max-width: 600px;
+  }
+
+  .app h1 {
+    margin: 2.5rem auto;
+  }
+
+  .genders-title {
+    margin: 2rem auto;
+  }
+
+  .gender:hover {
+  transition: 300ms ease;
+  transform: scale(1.1);
+}
+}
