@@ -1,8 +1,8 @@
 
 ## Challenges
 1. **Getting a drop down option for the meters and kgs units.**\
-   Found a [*quick solution on google.*](https://educba.com/html-form-elements)
-   Code:   ```<select className='units' >
+   Found a [*quick solution on google.*](https://educba.com/html-form-elements)\
+   Code:\   ```<select className='units' >
                 <option value="kgs">kgs</option>
                 <option value="kgs">lbs</option>
               </select>```
@@ -10,8 +10,11 @@
 2. **Each time I inceamented an input value by 1, I was not getting a sum but rather 1 was being added to the value.**\
    For example, I would get: 
    >31111 
+
    whenever I clicked on the plus icon three times - instead of getting 
+   
    >a 34.  
+
    Solution: I had to change the input type from `text` to `number`, then convert the input value to an intenger using the `parseint()` method.   
 
 3. **Hiding Arrows From Input Number**\
