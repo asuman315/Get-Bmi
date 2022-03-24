@@ -12,9 +12,9 @@ export const AppContext = createContext();
 
 const App = () => {
 
-  const [ageCount, setAgeCount] = useState(28)
-  const [weightCount, setWeightCount] = useState(68)
-  const [heightCount, setHeightCount] = useState(1.8)
+  const [ageCount, setAgeCount] = useState('')
+  const [weightCount, setWeightCount] = useState('')
+  const [heightCount, setHeightCount] = useState('')
   const [checkMaleGender, setCheckMaleGender] = useState()
   const [checkFemaleGender, setCheckFemaleGender] = useState()
   const [optionValues, setOptionValue] = useState(['Kgs', 'Ibs', 'm', 'ft'])
@@ -71,6 +71,7 @@ const App = () => {
       setAlert({ show: true, msg: 'Please, you need to select a gender!' })
       return
     }
+    console.log(weightCount);
     navigate('/results')
   }
 

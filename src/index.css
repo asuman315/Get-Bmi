@@ -237,6 +237,7 @@ ul {
   position: absolute;
   top: 55rem;
   width: 75%;
+  max-width: var(--width-max);
   padding: 1rem;
   border-radius: 10px;
   letter-spacing: 1px;

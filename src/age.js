@@ -99,7 +99,7 @@ const Age = () => {
             />
             <select className='units'>
                 <option value={m}>{m}</option>
-                <option value={ft}>{ft}</option>
+                <option value={ft}>{m}</option>
             </select>
           </div> 
        </li>

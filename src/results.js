@@ -16,7 +16,6 @@ const Results = () => {
     setCheckMaleGender('')
     setCheckFemaleGender('')
     navigate('/get-bmi')
-  
   }
 
 
