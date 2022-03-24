@@ -12,12 +12,17 @@ export const AppContext = createContext();
 
 const App = () => {
 
-  const [ageCount, setAgeCount] = useState('')
-  const [weightCount, setWeightCount] = useState('')
-  const [heightCount, setHeightCount] = useState('')
+  const [ageCount, setAgeCount] = useState(28)
+  const [weightCount, setWeightCount] = useState(68)
+  const [heightCount, setHeightCount] = useState(1.8)
   const [checkMaleGender, setCheckMaleGender] = useState()
   const [checkFemaleGender, setCheckFemaleGender] = useState()
+  const [optionValues, setOptionValue] = useState(['Kgs', 'Ibs', 'm', 'ft'])
   const [alert, setAlert] = useState({ show: false, msg: '', type: ''})
+
+  // if (select.value === 'Ibs') {
+
+  // }
 
   //calculate bmi
   let bmi = weightCount / (heightCount * heightCount)
@@ -62,10 +67,10 @@ const App = () => {
       return
     }
 
-    // if (!checkFemaleGender || !checkMaleGender) {
-    //   setAlert({ show: true, msg: 'Please, you need to select a gender!' })
-    //   return
-    // }
+    if (!checkFemaleGender && !checkMaleGender) {
+      setAlert({ show: true, msg: 'Please, you need to select a gender!' })
+      return
+    }
     navigate('/results')
   }
 
@@ -88,7 +93,9 @@ const App = () => {
       bmiCategory,
       normalWeightRanges,
       alert,
-      setAlert
+      setAlert,
+      optionValues,
+      setOptionValue
     }}>
       <Routes>
         <Route path='/get-bmi' element={<Main />} />

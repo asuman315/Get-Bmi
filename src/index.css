@@ -60,7 +60,6 @@ h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  cursor: pointer;
 }
 
 .gender-icon {
@@ -129,7 +128,6 @@ ul {
   background-color: white;
   padding: 1.5rem;
   width: 5%;
-  cursor: pointer;
 }
 
 .circle-plus {
@@ -165,7 +163,6 @@ ul {
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: 0.8;
-  cursor: pointer;
 }
 
 .button-container {
@@ -182,7 +179,8 @@ ul {
   font-weight: 500;
   color: white;
   background-color: var(--clr-primary-2);
-  cursor: pointer;
+  outline: none;
+  border: none;
 }
 
 .results-container {
@@ -222,7 +220,6 @@ ul {
   border-radius: 5px;
   color: white;
   margin-top: 1rem;
-  cursor: pointer;
 }
 
 .gender-checked {
@@ -279,6 +276,23 @@ input[type=number] {
 
   .genders-title {
     margin: 2rem auto;
+  }
+}
+@media screen and (min-width: 1200px) {
+   
+  .calculate-btn,
+  .results-container button,
+  .gender, 
+  .units,
+  .age img,
+  .height img,
+  .weight img {
+      cursor: pointer;
+  }
+  
+  .gender:hover {
+  transition: 300ms ease;
+  transform: scale(1.1);
   }
 
   .gender:hover {

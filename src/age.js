@@ -9,8 +9,11 @@ import Alert from './Alert'
 
 const Age = () => {
   
-  const { ageCount, setAgeCount, weightCount, setWeightCount, heightCount, setHeightCount, handleCalculation, alert, checkMaleGender, checkFemaleGender, 
+  const { ageCount, setAgeCount, weightCount, setWeightCount, heightCount, setHeightCount, handleCalculation, alert, optionValues, setOptionValues 
 } = useContext(AppContext)
+
+  //destructure optionValues
+  const [Kgs, Ibs, m, ft] = optionValues
  
   return (
    <div className="age-container">
@@ -30,13 +33,14 @@ const Age = () => {
                 placeholder='e.g 28' 
                 value={ageCount} 
                 onChange={(e) => setAgeCount(parseInt(e.target.value))}
+                min='1'
                 required  
              />
             <img 
               src={circlePlus} 
               className='circle-plus'  
               alt="circle-plus icon"
-              onClick={() => setAgeCount(ageCount + 1)}
+                onClick={() => setAgeCount(ageCount + 1)}
             />
           </div>
        </li>
@@ -64,8 +68,8 @@ const Age = () => {
                 onClick={() => setWeightCount(weightCount + 1)} 
               />
               <select className='units' >
-                <option value="kgs">kgs</option>
-                <option value="kgs">lbs</option>
+                <option value={Kgs}>{Kgs}</option>
+                <option value={Ibs}>{Ibs}</option>
               </select>
           </div>
        </li>
@@ -94,8 +98,8 @@ const Age = () => {
               onClick={() => setHeightCount(heightCount + 0.01)} 
             />
             <select className='units'>
-              <option value="m">m</option>
-              <option value="ft">ft</option>
+                <option value={m}>{m}</option>
+                <option value={ft}>{ft}</option>
             </select>
           </div> 
        </li>
