@@ -5,8 +5,9 @@ import {
 } from 'react-router-dom'
 import './index.css'
 import Results from './results';
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+//require('./age')
 
 export const AppContext = createContext();
 
@@ -17,29 +18,35 @@ const App = () => {
   const [heightCount, setHeightCount] = useState('')
   const [checkMaleGender, setCheckMaleGender] = useState()
   const [checkFemaleGender, setCheckFemaleGender] = useState()
-  const [optionValues, setOptionValue] = useState(['Kgs', 'Ibs', 'm', 'ft'])
+  const [optionWeightValue, setOptionWeightValue] = useState('Kgs')
+  const [optionHeightValue, setOptionHeightValue] = useState('m')
   const [alert, setAlert] = useState({ show: false, msg: '', type: ''})
 
-  // if (select.value === 'Ibs') {
-
-  // }
-
-  //calculate bmi
-  let bmi = weightCount / (heightCount * heightCount)
-  bmi = Math.round(bmi)
-  // console.log(bmi);
-
-  let normalWeightOne = 18.5 * (heightCount * heightCount)
-  normalWeightOne = Math.round(normalWeightOne)
   
-  let normalWeightTwo = 24.9 * (heightCount * heightCount)
-  normalWeightTwo = Math.round(normalWeightTwo)
-
-  const normalWeightRanges = [normalWeightOne, normalWeightTwo]
+  let convertedBmi = ''
   
+  //else if won't work if two conditions (like if a == 2 && b === 3) are incorporated statements with one condition (like if a === 2). All must be two if two conditions are to be used and vise varsa.
+  if (optionWeightValue === 'Ibs' && optionHeightValue === 'm') {
+    //console.log('Pounds and meters have been selected')
+    convertedBmi = (weightCount * 0.4536) / (heightCount * heightCount)
+  } else if (optionHeightValue === 'ft' && optionWeightValue === 'Kgs' ) {
+    //console.log('Feet and Kilos have been selected')
+    convertedBmi = weightCount / (heightCount * heightCount * 0.093)
+  } else if (optionWeightValue === 'Ibs' && optionHeightValue === 'ft') {
+    //console.log('Pounds and Feet have been selected');
+    convertedBmi = weightCount * 0.4536 / (heightCount * heightCount * 0.09)
+  } else {
+    //console.log('Default Values (Kgs and m) have been selected')
+    convertedBmi = weightCount / (heightCount * heightCount)
+  } 
+
+  let bmi = Math.round(convertedBmi)
+  //console.log(bmi);
+  
+  
+  //Handling Bmi categories
   let bmiCategory = '';
   let recommendation = '';
-
 
   if(bmi < 18.5) {
     bmiCategory = 'Under Weight'
@@ -54,13 +61,23 @@ const App = () => {
     bmiCategory = 'Obese'
     recommendation = 'Common treatments for obesity include losing weight through healthy eating and being more physically active. Mantaining a healthy weight may reduce the risk of chronic diseases associated with obesity.'
   }
+  
 
+  // Handling Normal Weight Ranges
+  let normalWeightOne = 18.5 * (heightCount * heightCount)
+  normalWeightOne = Math.round(normalWeightOne)
+
+  let normalWeightTwo = 24.9 * (heightCount * heightCount)
+  normalWeightTwo = Math.round(normalWeightTwo)
+
+  const normalWeightRanges = [normalWeightOne, normalWeightTwo]
+    
     //console.log(handleCalculation());
-
-  let navigate = useNavigate()
+    
+    let navigate = useNavigate()
 
   const handleCalculation = () => {
-
+    console.log(optionWeightValue, weightCount);
     //handle validations
     if (heightCount === '' || weightCount === '' || ageCount === '') {
       setAlert({show: true, msg: 'Please, you need to provide your Weight, Age and Height!'})
@@ -71,7 +88,7 @@ const App = () => {
       setAlert({ show: true, msg: 'Please, you need to select a gender!' })
       return
     }
-    console.log(weightCount);
+   // console.log(weightCount);
     navigate('/results')
   }
 
@@ -95,8 +112,11 @@ const App = () => {
       normalWeightRanges,
       alert,
       setAlert,
-      optionValues,
-      setOptionValue
+      optionHeightValue,
+      optionWeightValue,
+      setOptionHeightValue,
+      setOptionWeightValue
+
     }}>
       <Routes>
         <Route path='/get-bmi' element={<Main />} />

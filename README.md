@@ -30,7 +30,7 @@
    Solution: set a `step` value in the input e.g `step='0.01'` and change the `parseInt()` function to `parseFloat()`. Find source [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number)  
 
 5. **UseNavigate() could not be used outside the context of a <Router> component**\
-Solution: I had to wrap the root component (App) of my app inside a <Router> component within index.js file.\[*Source*](https://stackoverflow.com/questions/70491774/usenavigate-may-be-used-only-in-the-context-of-a-router-component)  
+Solution: I had to wrap the root component (App) of my app inside a <Router> component within index.js file.\[This was my source](https://stackoverflow.com/questions/70491774/usenavigate-may-be-used-only-in-the-context-of-a-router-component)  
 ```
 ReactDOM.render(
   <Router>
@@ -39,13 +39,32 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
-6. **i got an error of 'can not destructure properties of undefined'.**
+6. **I got an error of 'can not destructure properties of undefined'.**
   Instead of importing the variable of createContext() from `App.js` file, I was creating a new `createContext()` which caused a bug.
   ```diff
   - const AppContext = createContext();
   + import {AppContext} from './App'
   ```
 
+7. **Fetching a selected unit value from the select elements** 
+  This was one of my biggest worries when I first began the project.\ 
+  At times, I felt like giving up and using the (two - Kgs and m) default options. However, I realised that it would be a great learning opportunity.\ 
+  So I persisted. And with a couple of failed attempts searching for the answer on google, I managed to find a solution. [And here is the source](https://www.pluralsight.com/guides/how-to-get-selected-value-from-a-mapped-select-input-in-react) 
+
   ## Lessons learned
   - Using `prop drilling` to pass props from one sibling component to another.
   - How to use `useContext` hook to write less code and use short cuts during prop drilling.
+  - Fetching selected input `Values` from the `Select elements`\
+  Code:\ 
+  ```
+   <select 
+      className='units'
+      value={optionHeightValue}
+      onChange={(e) => setOptionHeightValue(e.target.value)}
+   >
+      <option value='m'>m</option>
+      <option value='ft'>ft</option>
+   </select>
+   
+  ```\
+  `console.log(optionHeightValue)` returns the selected `Value`

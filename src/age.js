@@ -3,17 +3,14 @@ import circlePlus from './images/circle-plus.svg';
 import React, { createContext, useContext } from 'react';
 import {AppContext} from './App'
 import Alert from './Alert'
-// import {} from 'react-icons/fa';
-
-//const AppContext = createContext();
 
 const Age = () => {
   
-  const { ageCount, setAgeCount, weightCount, setWeightCount, heightCount, setHeightCount, handleCalculation, alert, optionValues, setOptionValues 
+  const { ageCount, setAgeCount, weightCount, setWeightCount, heightCount, setHeightCount, handleCalculation, alert, optionHeightValue, setOptionWeightValue, optionWeightValue, setOptionHeightValue 
 } = useContext(AppContext)
 
   //destructure optionValues
-  const [Kgs, Ibs, m, ft] = optionValues
+  //const [Kgs, Ibs, m, ft] = optionValues
  
   return (
    <div className="age-container">
@@ -67,9 +64,13 @@ const Age = () => {
                 className='circle-plus' 
                 onClick={() => setWeightCount(weightCount + 1)} 
               />
-              <select className='units' >
-                <option value={Kgs}>{Kgs}</option>
-                <option value={Ibs}>{Ibs}</option>
+              <select 
+                className='units'
+                value={optionWeightValue}
+                onChange={(e) => setOptionWeightValue(e.target.value)} 
+              >
+                <option value='Kgs'>Kgs</option>
+                <option value='Ibs'>Ibs</option>
               </select>
           </div>
        </li>
@@ -97,9 +98,13 @@ const Age = () => {
               alt="circle plus" 
               onClick={() => setHeightCount(heightCount + 0.01)} 
             />
-            <select className='units'>
-                <option value={m}>{m}</option>
-                <option value={ft}>{m}</option>
+            <select 
+              className='units'
+              value={optionHeightValue}
+              onChange={(e) => setOptionHeightValue(e.target.value)}
+            >
+              <option value='m'>m</option>
+              <option value='ft'>ft</option>
             </select>
           </div> 
        </li>
