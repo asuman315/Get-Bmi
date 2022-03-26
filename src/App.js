@@ -23,25 +23,54 @@ const App = () => {
   const [alert, setAlert] = useState({ show: false, msg: '', type: ''})
 
   
+ 
+ // Handling Healthy Weight Ranges and Bmi
   let convertedBmi = ''
+  let convertedHealthyWeightOne = ''
+  let convertedHealthyWeightTwo = ''
+  const healthyBmiOne = 18.5;
+  const healthyBmiTwo = 24.9;
   
   //else if won't work if two conditions (like if a == 2 && b === 3) are incorporated statements with one condition (like if a === 2). All must be two if two conditions are to be used and vise varsa.
   if (optionWeightValue === 'Ibs' && optionHeightValue === 'm') {
     //console.log('Pounds and meters have been selected')
     convertedBmi = (weightCount * 0.4536) / (heightCount * heightCount)
+    
+    convertedHealthyWeightOne = (heightCount * heightCount) * healthyBmiOne/0.4536
+    
+    convertedHealthyWeightTwo = (heightCount * heightCount) * healthyBmiTwo/0.4536
+
   } else if (optionHeightValue === 'ft' && optionWeightValue === 'Kgs' ) {
     //console.log('Feet and Kilos have been selected')
     convertedBmi = weightCount / (heightCount * heightCount * 0.093)
+
+    convertedHealthyWeightOne = healthyBmiOne * (heightCount * heightCount * 0.093)
+    
+    convertedHealthyWeightTwo = healthyBmiTwo * (heightCount * heightCount * 0.093)
+
   } else if (optionWeightValue === 'Ibs' && optionHeightValue === 'ft') {
     //console.log('Pounds and Feet have been selected');
-    convertedBmi = weightCount * 0.4536 / (heightCount * heightCount * 0.09)
+    convertedBmi = (weightCount * 0.4536) / (heightCount * heightCount * 0.093)
+
+    convertedHealthyWeightOne = healthyBmiOne * (heightCount * heightCount * 0.093)/0.4536
+
+    convertedHealthyWeightTwo = healthyBmiTwo * (heightCount * heightCount * 0.093) / 0.4536
+
   } else {
     //console.log('Default Values (Kgs and m) have been selected')
     convertedBmi = weightCount / (heightCount * heightCount)
+    
+    convertedHealthyWeightOne = healthyBmiOne * (heightCount * heightCount)
+    
+    convertedHealthyWeightTwo = healthyBmiTwo * (heightCount * heightCount)
+
   } 
 
-  let bmi = Math.round(convertedBmi)
-  //console.log(bmi);
+  const bmi = Math.round((convertedBmi) * 10) / 10;
+  const healthyWeightOne = Math.round(convertedHealthyWeightOne);
+  const healthyWeightTwo = Math.round(convertedHealthyWeightTwo);
+  const healthyWeightRange = [healthyWeightOne, healthyWeightTwo]
+  console.log(bmi, healthyWeightRange);
   
   
   //Handling Bmi categories
@@ -62,18 +91,8 @@ const App = () => {
     recommendation = 'Common treatments for obesity include losing weight through healthy eating and being more physically active. Mantaining a healthy weight may reduce the risk of chronic diseases associated with obesity.'
   }
   
-
-  // Handling Normal Weight Ranges
-  let normalWeightOne = 18.5 * (heightCount * heightCount)
-  normalWeightOne = Math.round(normalWeightOne)
-
-  let normalWeightTwo = 24.9 * (heightCount * heightCount)
-  normalWeightTwo = Math.round(normalWeightTwo)
-
-  const normalWeightRanges = [normalWeightOne, normalWeightTwo]
-    
+  
     //console.log(handleCalculation());
-    
     let navigate = useNavigate()
 
   const handleCalculation = () => {
@@ -83,7 +102,6 @@ const App = () => {
       setAlert({show: true, msg: 'Please, you need to provide your Weight, Age and Height!'})
       return
     }
-
     if (!checkFemaleGender && !checkMaleGender) {
       setAlert({ show: true, msg: 'Please, you need to select a gender!' })
       return
@@ -91,8 +109,6 @@ const App = () => {
    // console.log(weightCount);
     navigate('/results')
   }
-
-
   return (
     <AppContext.Provider value={{
       ageCount,
@@ -109,7 +125,7 @@ const App = () => {
       bmi,
       recommendation,
       bmiCategory,
-      normalWeightRanges,
+      healthyWeightRange,
       alert,
       setAlert,
       optionHeightValue,
