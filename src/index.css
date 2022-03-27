@@ -244,6 +244,10 @@ ul {
   line-height: 2.5rem;
 }
 
+/* .results-container span .danger {
+  color: yellow;
+} */
+
 /* Hide input arrows on Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

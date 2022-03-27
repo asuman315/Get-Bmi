@@ -6,11 +6,8 @@ import Alert from './Alert'
 
 const Age = () => {
   
-  const { ageCount, setAgeCount, weightCount, setWeightCount, heightCount, setHeightCount, handleCalculation, alert, optionHeightValue, setOptionWeightValue, optionWeightValue, setOptionHeightValue 
+  const { age, setAge, weight, setWeight, height, setHeight, handleCalculation, alert, selectedHeightUnit, setSelectedWeightUnit, selectedWeightUnit, setSelectedHeightUnit
 } = useContext(AppContext)
-
-  //destructure optionValues
-  //const [Kgs, Ibs, m, ft] = optionValues
  
   return (
    <div className="age-container">
@@ -23,13 +20,13 @@ const Age = () => {
                 src={circleMinus} 
                 className='circle-minus' 
                 alt="circle-minus icon" 
-                onClick={() => setAgeCount(ageCount - 1)} 
+                onClick={() => setAge(age - 1)} 
               />
             <input 
                 type="number" 
                 placeholder='e.g 28' 
-                value={ageCount} 
-                onChange={(e) => setAgeCount(parseInt(e.target.value))}
+                value={age} 
+                onChange={(e) => setAge(parseInt(e.target.value))}
                 min='1'
                 required  
              />
@@ -37,7 +34,7 @@ const Age = () => {
               src={circlePlus} 
               className='circle-plus'  
               alt="circle-plus icon"
-                onClick={() => setAgeCount(ageCount + 1)}
+                onClick={() => setAge(age + 1)}
             />
           </div>
        </li>
@@ -48,13 +45,13 @@ const Age = () => {
                 src={circleMinus} 
                 alt="cricle plus" 
                 className='circle-minus' 
-                onClick={() => setWeightCount(weightCount - 1)} 
+                onClick={() => setWeight(weight - 1)} 
               />
              <input 
                 type="number" 
                 placeholder='e.g 68'
-                value={weightCount}
-                onChange={(e) => setWeightCount(parseInt(e.target.value))
+                value={weight}
+                onChange={(e) => setWeight(parseInt(e.target.value))
                 } 
                 required 
               />
@@ -62,12 +59,12 @@ const Age = () => {
                 src={circlePlus} 
                 alt="circle plus" 
                 className='circle-plus' 
-                onClick={() => setWeightCount(weightCount + 1)} 
+                onClick={() => setWeight(weight + 1)} 
               />
               <select 
                 className='units'
-                value={optionWeightValue}
-                onChange={(e) => setOptionWeightValue(e.target.value)} 
+                value={selectedWeightUnit}
+                onChange={(e) => setSelectedWeightUnit(e.target.value)} 
               >
                 <option value='Kgs'>Kgs</option>
                 <option value='Ibs'>Ibs</option>
@@ -81,14 +78,14 @@ const Age = () => {
               src={circleMinus} 
               className='circle-minus' 
               alt="circle minus" 
-              onClick={() => setHeightCount(heightCount - 0.01)} 
+              onClick={() => setHeight(height - 0.01)} 
               required 
             />
             <input 
               type="number"  
               placeholder='e.g 1.8' 
-              value={heightCount}
-              onChange={(e) => setHeightCount(parseFloat(e.target.value))}
+              value={height}
+              onChange={(e) => setHeight(parseFloat(e.target.value))}
               step='0.01'
               required 
             />
@@ -96,12 +93,12 @@ const Age = () => {
               src={circlePlus} 
               className='circle-plus' 
               alt="circle plus" 
-              onClick={() => setHeightCount(heightCount + 0.01)} 
+              onClick={() => setHeight(height + 0.01)} 
             />
             <select 
               className='units'
-              value={optionHeightValue}
-              onChange={(e) => setOptionHeightValue(e.target.value)}
+              value={selectedHeightUnit}
+              onChange={(e) => setSelectedHeightUnit(e.target.value)}
             >
               <option value='m'>m</option>
               <option value='ft'>ft</option>

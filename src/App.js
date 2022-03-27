@@ -13,13 +13,13 @@ export const AppContext = createContext();
 
 const App = () => {
 
-  const [ageCount, setAgeCount] = useState('')
-  const [weightCount, setWeightCount] = useState('')
-  const [heightCount, setHeightCount] = useState('')
+  const [age, setAge] = useState('')
+  const [weight, setWeight] = useState('')
+  const [height, setHeight] = useState('')
   const [checkMaleGender, setCheckMaleGender] = useState()
   const [checkFemaleGender, setCheckFemaleGender] = useState()
-  const [optionWeightValue, setOptionWeightValue] = useState('Kgs')
-  const [optionHeightValue, setOptionHeightValue] = useState('m')
+  const [selectedWeightUnit, setSelectedWeightUnit] = useState('Kgs')
+  const [selectedHeightUnit, setSelectedHeightUnit] = useState('m')
   const [alert, setAlert] = useState({ show: false, msg: '', type: ''})
 
   
@@ -32,37 +32,37 @@ const App = () => {
   const healthyBmiTwo = 24.9;
   
   //else if won't work if two conditions (like if a == 2 && b === 3) are incorporated statements with one condition (like if a === 2). All must be two if two conditions are to be used and vise varsa.
-  if (optionWeightValue === 'Ibs' && optionHeightValue === 'm') {
+  if (selectedWeightUnit === 'Ibs' && selectedHeightUnit === 'm') {
     //console.log('Pounds and meters have been selected')
-    convertedBmi = (weightCount * 0.4536) / (heightCount * heightCount)
+    convertedBmi = (weight * 0.4536) / (height * height)
     
-    convertedHealthyWeightOne = (heightCount * heightCount) * healthyBmiOne/0.4536
+    convertedHealthyWeightOne = (height * height) * healthyBmiOne/0.4536
     
-    convertedHealthyWeightTwo = (heightCount * heightCount) * healthyBmiTwo/0.4536
+    convertedHealthyWeightTwo = (height * height) * healthyBmiTwo/0.4536
 
-  } else if (optionHeightValue === 'ft' && optionWeightValue === 'Kgs' ) {
+  } else if (selectedHeightUnit === 'ft' && selectedWeightUnit === 'Kgs' ) {
     //console.log('Feet and Kilos have been selected')
-    convertedBmi = weightCount / (heightCount * heightCount * 0.093)
+    convertedBmi = weight / (height * height * 0.093)
 
-    convertedHealthyWeightOne = healthyBmiOne * (heightCount * heightCount * 0.093)
+    convertedHealthyWeightOne = healthyBmiOne * (height * height * 0.093)
     
-    convertedHealthyWeightTwo = healthyBmiTwo * (heightCount * heightCount * 0.093)
+    convertedHealthyWeightTwo = healthyBmiTwo * (height * height * 0.093)
 
-  } else if (optionWeightValue === 'Ibs' && optionHeightValue === 'ft') {
+  } else if (selectedWeightUnit === 'Ibs' && selectedHeightUnit === 'ft') {
     //console.log('Pounds and Feet have been selected');
-    convertedBmi = (weightCount * 0.4536) / (heightCount * heightCount * 0.093)
+    convertedBmi = (weight * 0.4536) / (height * height * 0.093)
 
-    convertedHealthyWeightOne = healthyBmiOne * (heightCount * heightCount * 0.093)/0.4536
+    convertedHealthyWeightOne = healthyBmiOne * (height * height * 0.093)/0.4536
 
-    convertedHealthyWeightTwo = healthyBmiTwo * (heightCount * heightCount * 0.093) / 0.4536
+    convertedHealthyWeightTwo = healthyBmiTwo * (height * height * 0.093) / 0.4536
 
   } else {
     //console.log('Default Values (Kgs and m) have been selected')
-    convertedBmi = weightCount / (heightCount * heightCount)
+    convertedBmi = weight / (height * height)
     
-    convertedHealthyWeightOne = healthyBmiOne * (heightCount * heightCount)
+    convertedHealthyWeightOne = healthyBmiOne * (height * height)
     
-    convertedHealthyWeightTwo = healthyBmiTwo * (heightCount * heightCount)
+    convertedHealthyWeightTwo = healthyBmiTwo * (height * height)
 
   } 
 
@@ -70,7 +70,7 @@ const App = () => {
   const healthyWeightOne = Math.round(convertedHealthyWeightOne);
   const healthyWeightTwo = Math.round(convertedHealthyWeightTwo);
   const healthyWeightRange = [healthyWeightOne, healthyWeightTwo]
-  console.log(bmi, healthyWeightRange);
+  //console.log(bmi, healthyWeightRange);
   
   
   //Handling Bmi categories
@@ -96,9 +96,9 @@ const App = () => {
     let navigate = useNavigate()
 
   const handleCalculation = () => {
-    console.log(optionWeightValue, weightCount);
+    
     //handle validations
-    if (heightCount === '' || weightCount === '' || ageCount === '') {
+    if (height === '' || weight === '' || age === '') {
       setAlert({show: true, msg: 'Please, you need to provide your Weight, Age and Height!'})
       return
     }
@@ -106,17 +106,34 @@ const App = () => {
       setAlert({ show: true, msg: 'Please, you need to select a gender!' })
       return
     }
+
+    if (age < 18) {
+      setAlert({ 
+        show: true,
+        msg: 'Sorry!! Bmi is not used for children below 18 years'
+      })
+      return
+    }
+
+    if (age > 65) {
+        setAlert({
+          show: true,
+          msg: 'Sorry!! Bmi is not used for the elderly above 65 years'
+      })
+      return
+    }
+
    // console.log(weightCount);
     navigate('/results')
   }
   return (
     <AppContext.Provider value={{
-      ageCount,
-      setAgeCount,
-      weightCount,
-      setWeightCount,
-      heightCount,
-      setHeightCount,
+      age,
+      setAge,
+      weight,
+      setWeight,
+      height,
+      setHeight,
       handleCalculation,
       checkFemaleGender,
       checkMaleGender,
@@ -128,11 +145,10 @@ const App = () => {
       healthyWeightRange,
       alert,
       setAlert,
-      optionHeightValue,
-      optionWeightValue,
-      setOptionHeightValue,
-      setOptionWeightValue
-
+      selectedHeightUnit,
+      selectedWeightUnit,
+      setSelectedHeightUnit,
+      setSelectedWeightUnit
     }}>
       <Routes>
         <Route path='/get-bmi' element={<Main />} />

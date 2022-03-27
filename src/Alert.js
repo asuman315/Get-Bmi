@@ -11,7 +11,7 @@ const Alert = () => {
  useEffect(() => {
   const alertTimeOut = setTimeout (() => {
     setAlert({show: false})
-  }, 2500)
+  }, 3000)
   
   //clean up function
   return () => clearTimeout(alertTimeOut)
