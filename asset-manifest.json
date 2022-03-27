@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/get-bmi/static/css/main.4eb5c3c2.css",
-    "main.js": "/get-bmi/static/js/main.ec166950.js",
+    "main.css": "/get-bmi/static/css/main.6c6f3e99.css",
+    "main.js": "/get-bmi/static/js/main.b7364c03.js",
     "static/media/female-icons.svg": "/get-bmi/static/media/female-icons.4d7df9f9dcb7e042a65ec965492dac07.svg",
     "static/media/circle-plus.svg": "/get-bmi/static/media/circle-plus.2942fdf2bb8fba1fc266e54531f2aa65.svg",
     "index.html": "/get-bmi/index.html",
     "static/media/male-icon.svg": "/get-bmi/static/media/male-icon.68c2fbceb1125ae75cc4a2b5049bd136.svg",
     "static/media/circle-minus.svg": "/get-bmi/static/media/circle-minus.2c945840b6f17a5652c75beb1b1b58b3.svg",
-    "main.4eb5c3c2.css.map": "/get-bmi/static/css/main.4eb5c3c2.css.map",
-    "main.ec166950.js.map": "/get-bmi/static/js/main.ec166950.js.map"
+    "main.6c6f3e99.css.map": "/get-bmi/static/css/main.6c6f3e99.css.map",
+    "main.b7364c03.js.map": "/get-bmi/static/js/main.b7364c03.js.map"
   },
   "entrypoints": [
-    "static/css/main.4eb5c3c2.css",
-    "static/js/main.ec166950.js"
+    "static/css/main.6c6f3e99.css",
+    "static/js/main.b7364c03.js"
   ]
 }
