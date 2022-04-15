@@ -7,15 +7,16 @@ import './index.css'
 import Results from './results';
 import React, { useState, createContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Footer from './Footer';
 //require('./age')
 
 export const AppContext = createContext();
 
 const App = () => {
 
-  const [age, setAge] = useState('')
-  const [weight, setWeight] = useState('')
-  const [height, setHeight] = useState('')
+  const [age, setAge] = useState(0)
+  const [weight, setWeight] = useState(0)
+  const [height, setHeight] = useState(0)
   const [checkMaleGender, setCheckMaleGender] = useState()
   const [checkFemaleGender, setCheckFemaleGender] = useState()
   const [selectedWeightUnit, setSelectedWeightUnit] = useState('Kgs')
@@ -91,17 +92,17 @@ const App = () => {
     recommendation = 'Common treatments for obesity include losing weight through healthy eating and being more physically active. Mantaining a healthy weight may reduce the risk of chronic diseases associated with obesity.'
   }
   
-  
-    //console.log(handleCalculation());
+
     let navigate = useNavigate()
 
   const handleCalculation = () => {
     
     //handle validations
-    if (height === '' || weight === '' || age === '') {
-      setAlert({show: true, msg: 'Please, you need to provide your Weight, Age and Height!'})
+    if (height <= 0 || isNaN(height) || weight <= 0 || isNaN(weight) || age <= 0 || isNaN(age)) {
+      setAlert({show: true, msg: 'Please, make sure you entered the right Age, Weight and Height!'})
       return
     }
+
     if (!checkFemaleGender && !checkMaleGender) {
       setAlert({ show: true, msg: 'Please, you need to select a gender!' })
       return
@@ -154,6 +155,7 @@ const App = () => {
         <Route path='/get-bmi' element={<Main />} />
         <Route path='/results' element={<Results />} />
       </Routes>
+      <Footer />
     </AppContext.Provider>
   )
 }

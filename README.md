@@ -1,3 +1,33 @@
+# Authentication React Application 
+
+## Overview
+My challenge was to build out a BMI application that is usable, enjoyable and useful. 
+
+The App was a full front-end project built with reactjs and with no backend.
+
+I had to build an App that could enable users know there BMI category as easier as possible. 
+
+### The challenge
+
+Users should be able to:
+
+- Know their BMI value.
+- Know their BMI category.
+- Get a recommended healthy weight that's specific to their height.
+
+### Links
+
+- Live Site: [Access it here](https://asuman315.github.io/get-bmi)
+
+## My process
+
+### Built with
+
+- **Front-end**
+  - Reactjs
+  - `React router dom` and `useNavigate` to navigate from onepage to the other.
+  - CSS 3.
+- Mobile-first workflow
 
 ## Challenges
 1. **Getting a drop down option for the meters and kgs units.**\
@@ -7,7 +37,7 @@
                 <option value="kgs">lbs</option>
               </select>```
 
-2. **Each time I inceamented an input value by 1, I was not getting a sum but rather 1 was being added to the value.**\
+2. **Each time I inceamented an input `value` by `1`, I was not getting a sum but rather `1` was being added to the value.**\
    For example, I would get: 
    >31111 
 
@@ -17,7 +47,7 @@
 
    Solution: I had to change the `input type` from `text` to `number`, then convert the input value to an intenger using the `parseInt()` method. 
 
-   *Code:\*  
+   *Code:* 
    ```diff
    - onChange={(e) => setAgeCount(e.target.value)}
    + onChange={(e) => setAgeCount(parseInt(e.target.value))}
@@ -68,3 +98,9 @@ ReactDOM.render(
    
   ```\
   `console.log(optionHeightValue)` returns the selected `Value`
+
+  ## Way  Forward.
+
+  This project helped me to learn a lot of concepts even though the challenges were frustrating and annoying at times.
+
+  I can't wait to apply all I have learned in my next projects.

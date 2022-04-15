@@ -17,12 +17,12 @@ const Results = () => {
     }
   }, [])
 
-  console.log(alert, bmiCategory);
+  //console.log(alert, bmiCategory);
 
   const backToHome = () => {
-    setWeight('')
-    setHeight('')
-    setAge('')
+    setWeight(0)
+    setHeight(0)
+    setAge(0)
     setCheckMaleGender('')
     setCheckFemaleGender('')
     navigate('/get-bmi')

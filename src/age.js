@@ -78,22 +78,22 @@ const Age = () => {
               src={circleMinus} 
               className='circle-minus' 
               alt="circle minus" 
-              onClick={() => setHeight(height - 0.01)} 
+                onClick={() => setHeight( Math.round( ( height - 0.1 ) * 10 ) / 10 )} 
               required 
             />
             <input 
               type="number"  
               placeholder='e.g 1.8' 
               value={height}
-              onChange={(e) => setHeight(parseFloat(e.target.value))}
-              step='0.01'
+              onChange={(e) => setHeight(parseFloat(e.target.value)) }
+              step='0.1'
               required 
             />
             <img 
               src={circlePlus} 
               className='circle-plus' 
               alt="circle plus" 
-              onClick={() => setHeight(height + 0.01)} 
+              onClick={() => setHeight(Math.round((height + 0.1) * 10)/10)} 
             />
             <select 
               className='units'
