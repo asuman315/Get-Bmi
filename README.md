@@ -67,8 +67,12 @@ Users should be able to:
 4. **Input not accepting decimal values**\
    Solution: set a `step` value in the input e.g `step='0.01'` and change the `parseInt()` function to `parseFloat()`. Find source [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number)  
 
-5. **UseNavigate() could not be used outside the context of a <Router> component**\
-Solution: I had to wrap the root component (App) of my app inside a <Router> component within index.js file.\[This was my source](https://stackoverflow.com/questions/70491774/usenavigate-may-be-used-only-in-the-context-of-a-router-component)  
+5. **UseNavigate() could not be used outside the context of a <Router> component**
+
+Solution: I had to wrap the root component (App) of my app inside a `Router` component within `index.js` file. 
+
+[This was my source](https://stackoverflow.com/questions/70491774/usenavigate-may-be-used-only-in-the-context-of-a-router-component)  
+
 ```js
 ReactDOM.render(
   <Router>
