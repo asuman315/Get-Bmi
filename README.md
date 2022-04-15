@@ -1,4 +1,4 @@
-# Authentication React Application 
+# BMI React Application 
 
 ## Overview
 My challenge was to build out a BMI application that is usable, enjoyable and useful. 
@@ -11,7 +11,7 @@ I had to build an App that could enable users know there BMI category as easier 
 
 Users should be able to:
 
-- Know their BMI value.
+- Know their BMI value by entering their height in either meters or feet and their weight in either kilograms or pounds. It would have been easier for me to use only height in meters and weight in kilograms but that would not provide the best user experience.
 - Know their BMI category.
 - Get a recommended healthy weight that's specific to their height.
 
@@ -32,7 +32,8 @@ Users should be able to:
 ## Challenges
 1. **Getting a drop down option for the meters and kgs units.**\
    Found a [*quick solution on google.*](https://educba.com/html-form-elements)\
-   Code:\   ```<select className='units' >
+   Code:\   ```html
+              <select className='units' >
                 <option value="kgs">kgs</option>
                 <option value="kgs">lbs</option>
               </select>```
@@ -61,7 +62,7 @@ Users should be able to:
 
 5. **UseNavigate() could not be used outside the context of a <Router> component**\
 Solution: I had to wrap the root component (App) of my app inside a <Router> component within index.js file.\[This was my source](https://stackoverflow.com/questions/70491774/usenavigate-may-be-used-only-in-the-context-of-a-router-component)  
-```
+```js
 ReactDOM.render(
   <Router>
     <App />
@@ -86,7 +87,7 @@ ReactDOM.render(
   - How to use `useContext` hook to write less code and use short cuts during prop drilling.
   - Fetching selected input `Values` from the `Select elements`\
   Code:\ 
-  ```
+  ```html
    <select 
       className='units'
       value={optionHeightValue}
@@ -97,6 +98,7 @@ ReactDOM.render(
    </select>
    
   ```\
+  
   `console.log(optionHeightValue)` returns the selected `Value`
 
   ## Way  Forward.
