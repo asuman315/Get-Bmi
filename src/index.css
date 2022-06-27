@@ -14,6 +14,7 @@ html {
   --clr-dark-gray: hsl(240, 5%, 57%);
   --clr-light-gray: hsl(240, 5%, 95%);
   --clr-green: #86efac;
+  --width-max: 600px;
 }
 
 h1,
