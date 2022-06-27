@@ -4,15 +4,16 @@ html {
   margin: 0;
   font-size: 10px;
   font-family: 'Montserrat', sans-serif;
-  background-color: var(--clr-primary-1);
+  background-color: var(--clr-green);
 }
 
 :root {
   --clr-primary-1: black;
-  --clr-primary-2: hsl(125, 78%, 60%);
+  --clr-primary-2: hsl(125, 88%, 50%);
   --clr-primary-3: hsl(0, 79%, 65%);
-  --clr-dark-gray: hsl(240, 5%, 17%);
-  --width-max: 600px;
+  --clr-dark-gray: hsl(240, 5%, 57%);
+  --clr-light-gray: hsl(240, 5%, 95%);
+  --clr-green: #86efac;
 }
 
 h1,
@@ -20,10 +21,10 @@ h2,
 h3,
 h4 {
   font-family: 'poppins', sans-serif;
+  color: var(--clr-primary-1);
 }
 
-.app h1 {
-  color: white;
+.app h1 { 
   font-size: 3rem;
   text-transform: capitalize;
   letter-spacing: 1px;
@@ -79,7 +80,6 @@ h4 {
 }
 
 .name {
-  color: white;
   font-weight: 400;
   font-size: 1.5rem;
   letter-spacing: 1px;
@@ -99,12 +99,15 @@ ul {
   width: 100%;
 }
 
+.age-container ul li {
+  list-style: none;
+}
+
 .fields {
   display: flex;
 }
 
 .age-container h3 {
-  color: white;
   font-size: 1.5rem;
   letter-spacing: 1px;
   font-weight: 400;
@@ -319,3 +322,4 @@ input[type=number] {
   transform: scale(1.1);
 }
 }
+
